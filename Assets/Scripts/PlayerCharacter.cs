@@ -4,46 +4,26 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    //private = camelCase public = PascalCase
     [SerializeField]
-    private int lives = 3;
+    private float speed = 5;
 
     [SerializeField]
-    private string name = "Hector";
-    //if they both are the same type use commas
-    [SerializeField]
-    private float jumpHeight = 5, speed = 5;
+    private Rigidbody2D rb2d;
 
-    private bool hasKey;
-
-    private bool isOnGround;
-
-    private Rigidbody2D rigidbody2DInstance;
     private float horizontalInput;
-
-    // Use this for initialization
+    //Use this for initialization
     void Start()
     {
-        //have to initialize our component
-        rigidbody2DInstance = GetComponent<Rigidbody2D>(); //Get component get the first object in that name and place it in there to use     
-        rigidbody2DInstance.gravityScale = 5;
+        
     }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        //transform.Translate(0,-.02f,0); don't use translate 'cause we using physics
-        GetInput();
-        Move();
-    }
-
-    private void GetInput()
+    //Update is called once per frame
+    void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
     }
-        private void Move()
-        {
-            rigidbody2DInstance.velocity = new Vector2(horizontalInput, 0);
-        }
 
+    void FixedUpdate()
+    {
+        rb2d.AddForce(Vector2.right * horizontalInput * speed);
+    }
 }
