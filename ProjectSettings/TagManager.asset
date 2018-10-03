@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 1094295541
     locked: 0
+  - name: Platforms
+    uniqueID: 789128755
+    locked: 0
   - name: PickUps
     uniqueID: 3282787327
     locked: 0
