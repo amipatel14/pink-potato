@@ -17,6 +17,12 @@ public class PlayerCharacter : MonoBehaviour
     private Rigidbody2D rb2d;
 
     [SerializeField]
+    private Collider2D playerGroundCollider;
+
+    [SerializeField]
+    private PhysicsMaterial2D playerMovingPhysicsMaterial, playerStoppingPhysicsMaterial;
+
+    [SerializeField]
     private Collider2D groundDetectTrigger;
 
     [SerializeField]
@@ -33,21 +39,37 @@ public class PlayerCharacter : MonoBehaviour
         UpdateHorizontalInput();
         HandleJumpInput();
     }
-    
+
+    void FixedUpdate()
+    {
+        UpdatePhysicsMaterial();
+        Move();
+    }
+
+    private void UpdatePhysicsMaterial()
+    {
+        if(Mathf.Abs(horizontalInput)>0)
+        {
+            playerGroundCollider.sharedMaterial = playerMovingPhysicsMaterial;
+        }
+        else
+        {
+            playerGroundCollider.sharedMaterial = playerStoppingPhysicsMaterial;
+        }
+    }
+
     private void UpdateIsOnGround()
     {
         isOnGround = groundDetectTrigger.OverlapCollider(groundContactFliter, groundHitDetectionResults)> 0;
         //Debug.Log("IsOnGround?: " + isOnGround);
 
     }
-    void FixedUpdate()
-    {
-        Move();
-    }
+
     private void UpdateHorizontalInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
     }
+
     private void HandleJumpInput()
     {
         if (Input.GetButtonDown("Jump") && isOnGround)
@@ -64,5 +86,4 @@ public class PlayerCharacter : MonoBehaviour
         clampedVelocity.x = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
         rb2d.velocity = clampedVelocity;
     }
-
 }

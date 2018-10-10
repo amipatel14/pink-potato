@@ -428,7 +428,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1288410785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.5, y: 2.25, z: 0}
+  m_LocalPosition: {x: -8.5, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -462,7 +462,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1288410785}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: e5931cd3a81b2ba4db3ab4ddf2622d7e, type: 2}
+  m_Material: {fileID: 6200000, guid: aae77cb04ef21b643bd19371193d5df4, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -494,6 +494,11 @@ MonoBehaviour:
   maxSpeed: 5
   jumpForce: 10
   rb2d: {fileID: 1288410788}
+  playerGroundCollider: {fileID: 1288410789}
+  playerMovingPhysicsMaterial: {fileID: 6200000, guid: f0e283d1643c9a340b3eb162e1c7ac1d,
+    type: 2}
+  playerStoppingPhysicsMaterial: {fileID: 6200000, guid: aae77cb04ef21b643bd19371193d5df4,
+    type: 2}
   groundDetectTrigger: {fileID: 1288410791}
   groundContactFliter:
     useTriggers: 0
@@ -654,8 +659,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1632193679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.75, y: -5.5, z: 1}
-  m_LocalScale: {x: 8.494202, y: 1, z: 1}
+  m_LocalPosition: {x: -9.796, y: -5.5, z: 1}
+  m_LocalScale: {x: 9.638453, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -779,7 +784,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1734108918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.75, y: -5.5, z: 1}
+  m_LocalPosition: {x: 8.53, y: -5.5, z: 1}
   m_LocalScale: {x: 8.494202, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -879,7 +884,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2085469285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -5.5, z: 1}
+  m_LocalPosition: {x: -0.32, y: -5.5, z: 1}
   m_LocalScale: {x: 9.343622, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
