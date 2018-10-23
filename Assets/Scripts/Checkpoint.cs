@@ -16,10 +16,12 @@ public class Checkpoint : MonoBehaviour
 
     private bool isActivated = false;
     private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         UpdateColor();
     }
 
@@ -63,11 +65,13 @@ public class Checkpoint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !isActivated)
         {
             //Debug.Log("Player hit the checkpoint");
             PlayerCharacter player = collision.GetComponent<PlayerCharacter>();
-            player.SetCurrentCheckpoint(this); 
+            player.SetCurrentCheckpoint(this);
+            audioSource.Play();
+
         }
     }
 }
