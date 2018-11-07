@@ -12,20 +12,17 @@ public class Checkpoint : MonoBehaviour
     private float inactivatedScale = 1, activatedScale = 1.5f;
 
     [SerializeField]
-<<<<<<< HEAD
-    private Color inactivedColor, activatedColor;
+    private Color inactivatedColor, activatedColor;
 
-    private bool isActicated = false; //all bools start false/ inactive
+    private bool isActivated = false; //all bools start false/ inactive
+
+    private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
     private void Update()
     {
         UpdateRotation();
+    }
 
-=======
-    private Color inactivatedColor, activatedColor;
-
-    private bool isActivated = false;
-    private SpriteRenderer spriteRenderer;
-    private AudioSource audioSource;
 
     private void Start()
     {
@@ -34,43 +31,28 @@ public class Checkpoint : MonoBehaviour
         UpdateColor();
     }
 
-    private void Update()
-    {
-        UpdateRotation();
-    }
-
     public void SetIsActivated(bool value)
     {
         isActivated = value;
         UpdateScale();
         UpdateColor();
->>>>>>> 0efe9304b8e1eade769e26362fc846dc8f4a3af0
     }
 
     private void UpdateColor()
     {
-<<<<<<< HEAD
-        Color color = inactivedColor;
-        if (isActicated)
-            color = activatedColor;
 
-
-
-=======
         Color color = inactivatedColor;
         if (isActivated)
             color = activatedColor;
 
         spriteRenderer.color = color;
 
-        
->>>>>>> 0efe9304b8e1eade769e26362fc846dc8f4a3af0
     }
     private void UpdateScale()
     {
         float scale = inactivatedScale;
-<<<<<<< HEAD
-        if (isActicated)
+
+        if (isActivated)
             scale = activatedScale;
 
         transform.localScale = Vector3.one * scale;
@@ -79,33 +61,12 @@ public class Checkpoint : MonoBehaviour
     private void UpdateRotation()
     {
         float rotationSpeed = inactivatedRotationSpeed;
-        if (isActicated)
+        if (isActivated)
             rotationSpeed = activatedRotationSpeed;
 
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
     }
 
-    public void SetIsActivated(bool value)
-    {
-        isActicated = value;
-        UpdateScale();
-    }
-
-=======
-        if (isActivated)
-            scale = activatedScale;
-
-        transform.localScale = Vector3.one *scale;
-    }
-    private void UpdateRotation()
-    {
-        float rotationSpeed = inactivatedRotationSpeed;
-        if (isActivated)
-            rotationSpeed = activatedRotationSpeed;
-
-       transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-    }
->>>>>>> 0efe9304b8e1eade769e26362fc846dc8f4a3af0
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !isActivated)
@@ -118,3 +79,4 @@ public class Checkpoint : MonoBehaviour
         }
     }
 }
+
