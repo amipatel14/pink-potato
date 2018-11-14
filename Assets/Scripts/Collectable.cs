@@ -7,6 +7,8 @@ public class Collectable : MonoBehaviour
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
+    private static int coinCount = 0; //static changes the coin count to belong to the class not each instance of the collecable made
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -17,6 +19,8 @@ public class Collectable : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            coinCount++;
+            Debug.Log("Coin count: " + coinCount);
             audioSource.Play();
             spriteRenderer.enabled = false;
             boxCollider2D.enabled = false;
