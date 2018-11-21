@@ -29,20 +29,27 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     private ContactFilter2D groundContactFliter;
 
+    private bool isFacingRight = true;
     private float horizontalInput;
     private bool isOnGround;
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
     private Checkpoint currentCheckpoint;
 
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     //Update is called once per frame
-    void Update()
+    private void Update()
     {
         UpdateIsOnGround();
         UpdateHorizontalInput();
         HandleJumpInput();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         UpdatePhysicsMaterial();
         Move();
@@ -55,7 +62,6 @@ public class PlayerCharacter : MonoBehaviour
 
         else
             playerGroundCollider.sharedMaterial = playerStoppingPhysicsMaterial;
-
     }
 
     private void UpdateIsOnGround()
@@ -74,8 +80,6 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isOnGround)
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-
     }
 
     private void Move()
@@ -84,6 +88,20 @@ public class PlayerCharacter : MonoBehaviour
         Vector2 clampedVelocity = rb2d.velocity;
         clampedVelocity.x = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
         rb2d.velocity = clampedVelocity;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+
+        if (horizontalInput > 0 && !isFacingRight)
+            Flip();
+        if (horizontalInput < 0 && isFacingRight)
+            Flip();
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     public void Respawn ()
@@ -95,8 +113,6 @@ public class PlayerCharacter : MonoBehaviour
             rb2d.velocity = Vector2.zero;
             transform.position = currentCheckpoint.transform.position;
         }
- 
-
     }
 
     public void SetCurrentCheckpoint(Checkpoint newCurrentCheckpoint)
