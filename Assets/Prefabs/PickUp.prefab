@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114231701870578300}
   - component: {fileID: 82110684750172334}
   m_Layer: 0
-  m_Name: Carrot
+  m_Name: PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720645214683174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.81, y: 0.22, z: 0}
+  m_LocalPosition: {x: 3.83, y: -3.67, z: 0}
   m_LocalScale: {x: 1.2019556, y: 1.2019563, z: 1.2019563}
   m_Children: []
   m_Father: {fileID: 0}
