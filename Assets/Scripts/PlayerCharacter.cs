@@ -67,6 +67,7 @@ public class PlayerCharacter : MonoBehaviour
     private void UpdateIsOnGround()
     {
         isOnGround = groundDetectTrigger.OverlapCollider(groundContactFliter, groundHitDetectionResults)> 0;
+        animator.SetBool("Ground", isOnGround);
         //Debug.Log("IsOnGround?: " + isOnGround);
 
     }
@@ -78,8 +79,15 @@ public class PlayerCharacter : MonoBehaviour
 
     private void HandleJumpInput()
     {
+        animator.SetFloat("VerticalSpeed", rb2d.velocity.y);
+
         if (Input.GetButtonDown("Jump") && isOnGround)
+        {
+            animator.SetBool("Ground", false);
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
+        
     }
 
     private void Move()
