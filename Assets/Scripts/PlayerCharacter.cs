@@ -113,10 +113,19 @@ public class PlayerCharacter : MonoBehaviour
         transform.localScale = theScale;
     }
 
+    private void Death()
+    {
+        animator.SetBool("IsDead", true);
+    }
+
     public void Respawn ()
     {
+
+        Death();
         if (currentCheckpoint == null)
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         else
         {
             rb2d.velocity = Vector2.zero;
