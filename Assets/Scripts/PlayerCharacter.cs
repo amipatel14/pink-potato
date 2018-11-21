@@ -31,6 +31,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private bool isFacingRight = true;
     private float horizontalInput;
+    private bool isPressR = false;
     private bool isOnGround;
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
     private Checkpoint currentCheckpoint;
@@ -115,7 +116,7 @@ public class PlayerCharacter : MonoBehaviour
     public void Respawn ()
     {
         if (currentCheckpoint == null)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         else
         {
             rb2d.velocity = Vector2.zero;

@@ -11,43 +11,28 @@ public class Checkpoint : MonoBehaviour
     [SerializeField]
     private float inactivatedScale = 1, activatedScale = 1.5f;
 
-    [SerializeField]
-    private Color inactivatedColor, activatedColor;
-
     private bool isActivated = false; //all bools start false/ inactive
 
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
+
     private void Update()
     {
         UpdateRotation();
     }
 
-
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
-        UpdateColor();
     }
 
     public void SetIsActivated(bool value)
     {
         isActivated = value;
         UpdateScale();
-        UpdateColor();
     }
 
-    private void UpdateColor()
-    {
-
-        Color color = inactivatedColor;
-        if (isActivated)
-            color = activatedColor;
-
-        spriteRenderer.color = color;
-
-    }
     private void UpdateScale()
     {
         float scale = inactivatedScale;

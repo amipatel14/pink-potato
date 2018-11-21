@@ -38,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720645214683174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.65, y: -3.92, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.81, y: 0.22, z: 0}
+  m_LocalScale: {x: 1.2019556, y: 1.2019563, z: 1.2019563}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,18 +56,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00000014901161, y: -0.025275588}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0625, y: 1.1875}
+    oldSize: {x: 0.5, y: 0.41}
     newSize: {x: 1.0625, y: 1.1875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0625, y: 1.1875}
+  m_Size: {x: 0.47273004, y: 0.4460752}
   m_EdgeRadius: 0
 --- !u!82 &82110684750172334
 AudioSource:
@@ -88,7 +88,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.22487384
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -225,10 +225,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1012179969
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16abf41653f3547419cae192277e992b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9505fdb594ccc554e9c6ee4f1bd62207, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

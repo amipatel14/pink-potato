@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Ground
   - Hazard
-  - 
+  - Collectables
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2670889239
+    locked: 0
+  - name: Hazards
+    uniqueID: 2497257627
     locked: 0
