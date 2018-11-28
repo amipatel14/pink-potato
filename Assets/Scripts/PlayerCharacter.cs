@@ -33,6 +33,8 @@ public class PlayerCharacter : MonoBehaviour
     private float horizontalInput;
     private bool isPressR = false;
     private bool isOnGround;
+    private bool isDead = false;
+    private bool doubleJump = false;
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
     private Checkpoint currentCheckpoint;
 
@@ -82,10 +84,13 @@ public class PlayerCharacter : MonoBehaviour
     {
         animator.SetFloat("VerticalSpeed", rb2d.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && isOnGround)
+        if (Input.GetButtonDown("Jump") && (isOnGround || !doubleJump))
         {
             animator.SetBool("Ground", false);
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+            if (!doubleJump && !isOnGround)
+                doubleJump = true;
         }
 
         
@@ -99,6 +104,8 @@ public class PlayerCharacter : MonoBehaviour
         rb2d.velocity = clampedVelocity;
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
+        if (isOnGround)
+            doubleJump = false;
         if (horizontalInput > 0 && !isFacingRight)
             Flip();
         if (horizontalInput < 0 && isFacingRight)
@@ -113,15 +120,16 @@ public class PlayerCharacter : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    private void Death()
+    public void Death()
     {
-        animator.SetBool("IsDead", true);
+        animator.SetBool("isDead", true);
+        isDead = true;
     }
+
 
     public void Respawn ()
     {
 
-        Death();
         if (currentCheckpoint == null)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

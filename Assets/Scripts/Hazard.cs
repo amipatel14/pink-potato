@@ -7,10 +7,12 @@ public class Hazard : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player entered hazard");
             PlayerCharacter player = collision.GetComponent<PlayerCharacter>();
+            player.Death();
             player.Respawn();
             
         }
