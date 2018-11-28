@@ -31,7 +31,6 @@ public class PlayerCharacter : MonoBehaviour
 
     private bool isFacingRight = true;
     private float horizontalInput;
-    private bool isPressR = false;
     private bool isOnGround;
     private bool isDead = false;
     private bool doubleJump = false;
@@ -122,14 +121,14 @@ public class PlayerCharacter : MonoBehaviour
 
     public void Death()
     {
-        animator.SetBool("isDead", true);
         isDead = true;
+        animator.SetBool("isDead", true);
     }
 
 
     public void Respawn ()
     {
-
+        Death();
         if (currentCheckpoint == null)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
