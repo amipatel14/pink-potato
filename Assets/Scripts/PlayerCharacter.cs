@@ -34,6 +34,7 @@ public class PlayerCharacter : MonoBehaviour
     private bool isOnGround;
     private bool isDead = false;
     private bool doubleJump = false;
+    private bool isRespawn = false;
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
     private Checkpoint currentCheckpoint;
 
@@ -49,6 +50,9 @@ public class PlayerCharacter : MonoBehaviour
         UpdateIsOnGround();
         UpdateHorizontalInput();
         HandleJumpInput();
+        if(Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     private void FixedUpdate()
@@ -128,7 +132,6 @@ public class PlayerCharacter : MonoBehaviour
 
     public void Respawn ()
     {
-        Death();
         if (currentCheckpoint == null)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
