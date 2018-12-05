@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,19 +30,22 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     private ContactFilter2D groundContactFliter;
 
+    [SerializeField]
+    private GameObject deathText;
+
     private bool isFacingRight = true;
     private float horizontalInput;
     private bool isOnGround;
-    private bool isDead = false;
     private bool doubleJump = false;
-    private bool isRespawn = false;
+    private bool isDead;
+
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
     private Checkpoint currentCheckpoint;
-
     private Animator animator;
-
+    
     private void Start()
     {
+        
         animator = GetComponent<Animator>();
     }
     //Update is called once per frame
@@ -50,9 +54,7 @@ public class PlayerCharacter : MonoBehaviour
         UpdateIsOnGround();
         UpdateHorizontalInput();
         HandleJumpInput();
-        if(Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        CheckForRespawn();
     }
 
     private void FixedUpdate()
@@ -74,8 +76,6 @@ public class PlayerCharacter : MonoBehaviour
     {
         isOnGround = groundDetectTrigger.OverlapCollider(groundContactFliter, groundHitDetectionResults)> 0;
         animator.SetBool("Ground", isOnGround);
-        //Debug.Log("IsOnGround?: " + isOnGround);
-
     }
 
     private void UpdateHorizontalInput()
@@ -95,8 +95,6 @@ public class PlayerCharacter : MonoBehaviour
             if (!doubleJump && !isOnGround)
                 doubleJump = true;
         }
-
-        
     }
 
     private void Move()
@@ -123,15 +121,17 @@ public class PlayerCharacter : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    public void Death()
+    public void Die()
     {
         isDead = true;
-        animator.SetBool("isDead", true);
+        animator.SetBool("OnHazard", true);
     }
 
-
-    public void Respawn ()
+    private void Respawn ()
     {
+        isDead = false;
+        deathText.gameObject.SetActive(false);
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         if (currentCheckpoint == null)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -140,6 +140,18 @@ public class PlayerCharacter : MonoBehaviour
         {
             rb2d.velocity = Vector2.zero;
             transform.position = currentCheckpoint.transform.position;
+        }
+    }
+    private void CheckForRespawn()
+    {
+        if (isDead)
+        {
+            rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+            deathText.gameObject.SetActive(true);
+            if (Input.GetButtonDown("Respawn"))
+            {
+                Respawn();
+            }
         }
     }
 
