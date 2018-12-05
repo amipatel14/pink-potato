@@ -11,7 +11,7 @@ public class Checkpoint : MonoBehaviour
     [SerializeField]
     private float inactivatedScale = 1, activatedScale = 1.5f;
 
-    private bool isActivated = false; //all bools start false/ inactive
+    private bool isActivated = false;
 
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
