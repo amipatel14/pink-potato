@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4889758758491570}
   - component: {fileID: 212355447374911800}
   - component: {fileID: 114853520618411174}
-  - component: {fileID: 60636396484717288}
+  - component: {fileID: 61207677350887114}
   m_Layer: 10
   m_Name: Hazard
   m_TagString: Untagged
@@ -42,8 +42,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60636396484717288
-PolygonCollider2D:
+--- !u!61 &61207677350887114
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -54,7 +54,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.007321596, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -64,16 +64,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.28, y: 0.19999999}
-      - {x: 0.099999994, y: 0.26999998}
-      - {x: -0.17, y: 0.26999998}
-      - {x: -0.45, y: -0.08}
-      - {x: -0.45, y: -0.26999998}
-      - {x: 0.45, y: -0.26999998}
-      - {x: 0.45, y: -0.089999996}
-      - {x: 0.39, y: 0.12}
+  serializedVersion: 2
+  m_Size: {x: 0.89163923, y: 0.54}
+  m_EdgeRadius: 0
 --- !u!114 &114853520618411174
 MonoBehaviour:
   m_ObjectHideFlags: 1

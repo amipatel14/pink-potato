@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : MonoBehaviour
@@ -31,7 +32,7 @@ public class PlayerCharacter : MonoBehaviour
     private ContactFilter2D groundContactFliter;
 
     [SerializeField]
-    private GameObject deathText;
+    private Text deathText;
 
     private bool isFacingRight = true;
     private float horizontalInput;
@@ -42,11 +43,12 @@ public class PlayerCharacter : MonoBehaviour
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
     private Checkpoint currentCheckpoint;
     private Animator animator;
-    
+    private AudioSource audioSource;
+
     private void Start()
     {
-        
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     //Update is called once per frame
     private void Update()
@@ -125,12 +127,14 @@ public class PlayerCharacter : MonoBehaviour
     {
         isDead = true;
         animator.SetBool("OnHazard", true);
+        audioSource.Play();
     }
 
     private void Respawn ()
     {
         isDead = false;
-        deathText.gameObject.SetActive(false);
+        animator.SetBool("OnHazard", false);
+        deathText.text = null;
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         if (currentCheckpoint == null)
         {
@@ -146,8 +150,8 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (isDead)
         {
+            deathText.text = "Press R to respawn";
             rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            deathText.gameObject.SetActive(true);
             if (Input.GetButtonDown("Respawn"))
             {
                 Respawn();

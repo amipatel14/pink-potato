@@ -60,7 +60,6 @@ public class Checkpoint : MonoBehaviour
             PlayerCharacter player = collision.GetComponent<PlayerCharacter>();
             player.SetCurrentCheckpoint(this);
             audioSource.Play();
-
         }
     }
 }
