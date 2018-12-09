@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField]
-    private float accelerationForce = 5;
+    private float accelerationForce;
 
     [SerializeField]
-    private float maxSpeed = 5;
+    private float maxSpeed;
 
     [SerializeField]
-    private float jumpForce = 10;
+    private float jumpForce;
 
     [SerializeField]
     private Rigidbody2D rb2d;

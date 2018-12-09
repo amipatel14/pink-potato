@@ -9,17 +9,6 @@ public class Door : MonoBehaviour
     private string sceneToLoad;
 
     private bool isPlayerInTrigger;
-    //Triggers door twice : player 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Player"))
-    //    {
-    //        if (Input.GetButtonDown("Activate"))
-    //        {
-    //            Debug.Log("Player activated Door!");
-    //        }
-    //    }
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
