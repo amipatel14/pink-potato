@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : MonoBehaviour
 {
+    #region 
     [SerializeField]
     private float accelerationForce;
 
@@ -33,18 +34,20 @@ public class PlayerCharacter : MonoBehaviour
 
     [SerializeField]
     private Text deathText;
-
+    #endregion
+    #region
     private bool isFacingRight = true;
     private float horizontalInput;
     private bool isOnGround;
     private bool doubleJump = false;
     private bool isDead;
-
+    #endregion
+    #region
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
     private Checkpoint currentCheckpoint;
     private Animator animator;
     private AudioSource audioSource;
-
+    #endregion
     private void Start()
     {
         animator = GetComponent<Animator>();
