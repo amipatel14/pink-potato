@@ -16159,7 +16159,7 @@ Prefab:
     - target: {fileID: 114072832860091270, guid: 8f238b4833cc3fe4e991101ff98ac489,
         type: 2}
       propertyPath: sceneToLoad
-      value: MainMenu
+      value: Scene3
       objectReference: {fileID: 0}
     - target: {fileID: 4660892841203912, guid: 8f238b4833cc3fe4e991101ff98ac489, type: 2}
       propertyPath: m_LocalScale.x
