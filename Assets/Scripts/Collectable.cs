@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    [SerializeField]
+    private Text countText;
+
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
@@ -20,7 +24,7 @@ public class Collectable : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             coinCount++;
-            Debug.Log("Coin count: " + coinCount);
+            countText.text = ("Mushroom count: " + coinCount);
             audioSource.Play();
             spriteRenderer.enabled = false;
             boxCollider2D.enabled = false;
