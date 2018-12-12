@@ -10564,11 +10564,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4660892841203912, guid: 8f238b4833cc3fe4e991101ff98ac489, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.04
+      value: 8.14
       objectReference: {fileID: 0}
     - target: {fileID: 4660892841203912, guid: 8f238b4833cc3fe4e991101ff98ac489, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.35
+      value: 3.19
       objectReference: {fileID: 0}
     - target: {fileID: 4660892841203912, guid: 8f238b4833cc3fe4e991101ff98ac489, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10597,7 +10597,7 @@ Prefab:
     - target: {fileID: 114072832860091270, guid: 8f238b4833cc3fe4e991101ff98ac489,
         type: 2}
       propertyPath: sceneToLoad
-      value: TestLevel
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4660892841203912, guid: 8f238b4833cc3fe4e991101ff98ac489, type: 2}
       propertyPath: m_LocalScale.x
